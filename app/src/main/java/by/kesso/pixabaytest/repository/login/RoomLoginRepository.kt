@@ -30,14 +30,22 @@ class RoomLoginRepository(
 
     override fun register(email: String, password: String): Single<RegisterResult> {
         val user = User(0, email, hashPassword(password))
-        return dao.insert(user)
+
+        return dao.getUser(email)
             .subscribeOn(Schedulers.io())
-            .delay(1, TimeUnit.SECONDS)
-            .map {
-                if (it != 0L) {
-                    RegisterResult.Success
+            .flatMap { users ->
+                if (users.isEmpty()) {
+                    dao.insert(user)
+                        .delay(1, TimeUnit.SECONDS)
+                        .map { id ->
+                            if (id != 0L) {
+                                RegisterResult.Success
+                            } else {
+                                RegisterResult.Error("Creating new user error.")
+                            }
+                        }
                 } else {
-                    RegisterResult.Error("Creating new user error.")
+                    Single.just(RegisterResult.Error("User with this email already exist"))
                 }
             }
     }
