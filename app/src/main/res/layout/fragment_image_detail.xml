@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="by.kesso.pixabaytest.ui.imageDetail.ImageDetailViewModel" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@drawable/image_placeholder"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#99FFFFFF"
+            android:padding="15dp"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Size:"/>
+                    <TextView
+                        android:id="@+id/tv_size"
+                        android:layout_weight="4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.image.imageSize.toString()}"
+                        tools:text="123Mb"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Type:"/>
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_weight="4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.image.type}"
+                        tools:text="photo"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tags:"/>
+                    <TextView
+                        android:id="@+id/tv_tags"
+                        android:layout_weight="4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.image.tags}"
+                        tools:text="butterfly, insect, flower"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Author:"/>
+                <TextView
+                    android:id="@+id/tv_author"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.image.user}"
+                    tools:text="BibaBoba"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_views"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    app:drawableStartCompat="@drawable/ic_baseline_remove_red_eye_24"
+                    android:text="@{viewmodel.image.views.toString()}"
+                    tools:text="34323" />
+                <TextView
+                    android:id="@+id/tv_likes"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_baseline_thumb_up_24"
+                    android:text="@{viewmodel.image.likes.toString()}"
+                    tools:text="44" />
+                <TextView
+                    android:id="@+id/tv_comments"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_baseline_comment_24"
+                    android:text="@{viewmodel.image.comments.toString()}"
+                    tools:text="4" />
+                <TextView
+                    android:id="@+id/tv_favorite"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_24"
+                    android:text="@{viewmodel.image.collections.toString()}"
+                    tools:text="55" />
+                <TextView
+                    android:id="@+id/tv_downloads"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:padding="2dp"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_baseline_cloud_download_24"
+                    android:text="@{viewmodel.image.downloads.toString()}"
+                    tools:text="5555" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

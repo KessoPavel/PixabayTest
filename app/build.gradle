@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -37,6 +39,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -49,6 +52,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.fragment:fragment-ktx:1.5.0'
     implementation "androidx.paging:paging-rxjava3:3.1.1"
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0")
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
@@ -68,8 +72,8 @@ dependencies {
     implementation "androidx.paging:paging-runtime:3.2.0-alpha01"
 
     // moshi
-    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
+    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

@@ -6,5 +6,5 @@ import by.kesso.pixabaytest.domain.entity.PixaImage
 import io.reactivex.rxjava3.core.Flowable
 
 interface PixeImageRepository {
-    fun getAll(): LiveData<PagingData<PixaImage>>
+    fun getAll(): Flowable<PagingData<PixaImage>>
 }

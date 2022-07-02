@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Flowable
 class GetImagesUseCase(
     private val repository: PixeImageRepository
 ) {
-    fun get(): LiveData<PagingData<PixaImage>> {
+    fun get(): Flowable<PagingData<PixaImage>> {
         return repository.getAll()
     }
 }

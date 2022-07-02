@@ -1,7 +1,9 @@
 package by.kesso.pixabaytest.domain.entity
 
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PixaImage(
     val id: Int,
 
@@ -32,4 +34,4 @@ data class PixaImage(
     val user: String?,
     val userId: Int?,
     val userImageURL: String?,
-)
+): Parcelable

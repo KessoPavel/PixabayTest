@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kesso.pixabaytest.databinding.FragmentHomeFrahmentBinding
 import by.kesso.pixabaytest.domain.entity.PixaImage
@@ -54,6 +55,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onClick(image: PixaImage) {
-
+        val direction = HomeFragmentDirections.actionHomeFragmentToImageDetailFragment(image)
+        findNavController().navigate(direction)
     }
 }
