@@ -6,23 +6,23 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class RemoteImage(
     @field:Json(name = "collections")
-    val collections: Int?,
+    val collections: Long?,
     @field:Json(name = "comments")
-    val comments: Int?,
+    val comments: Long?,
     @field:Json(name = "downloads")
-    val downloads: Int?,
+    val downloads: Long?,
     @field:Json(name = "id")
-    val id: Int?,
+    val id: Long?,
     @field:Json(name = "imageHeight")
     val imageHeight: Int?,
     @field:Json(name = "imageSize")
-    val imageSize: Int?,
+    val imageSize: Long?,
     @field:Json(name = "imageWidth")
     val imageWidth: Int?,
     @field:Json(name = "largeImageURL")
     val largeImageURL: String?,
     @field:Json(name = "likes")
-    val likes: Int?,
+    val likes: Long?,
     @field:Json(name = "pageURL")
     val pageURL: String?,
     @field:Json(name = "previewHeight")
@@ -38,11 +38,11 @@ data class RemoteImage(
     @field:Json(name = "user")
     val user: String?,
     @field:Json(name = "user_id")
-    val userId: Int?,
+    val userId: Long?,
     @field:Json(name = "userImageURL")
     val userImageURL: String?,
     @field:Json(name = "views")
-    val views: Int?,
+    val views: Long?,
     @field:Json(name = "webformatHeight")
     val webFormatHeight: Int?,
     @field:Json(name = "webformatURL")

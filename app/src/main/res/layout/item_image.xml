@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="by.kesso.pixabaytest.domain.entity.PixaImage" />
+        <variable
+            name="listener"
+            type="by.kesso.pixabaytest.ui.home.adapter.ImageAdapter.ClickListener" />
+    </data>
 
-    <ImageView
-        android:id="@+id/iv_preview"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
-
-    <TextView
-        android:id="@+id/tv_user_name"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:paddingStart="5dp"
-        tools:text="User name"/>
-</LinearLayout>
+        android:orientation="horizontal"
+        android:onClick="@{() -> listener.onClick(item)}">
+
+        <ImageView
+            android:id="@+id/iv_preview"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{item.previewURL}" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="bottom"
+            android:padding="10dp"
+            android:background="#BFFFFFFF"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            android:text="@{item.user}"
+            tools:text="User name"/>
+    </FrameLayout>
+</layout>

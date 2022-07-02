@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
@@ -9,19 +9,20 @@
     </data>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@drawable/image_placeholder"/>
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewmodel.image.largeImageURL}"
+            tools:src="@drawable/image_placeholder" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#99FFFFFF"
+            android:background="#BFFFFFFF"
             android:padding="15dp"
             android:layout_gravity="bottom"
             android:orientation="vertical">
@@ -38,13 +39,15 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="Size:"/>
                     <TextView
                         android:id="@+id/tv_size"
                         android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@{viewmodel.image.imageSize.toString()}"
+                        android:textColor="@color/black"
+                        app:fileSize="@{viewmodel.image.imageSize}"
                         tools:text="123Mb"/>
                 </LinearLayout>
                 <LinearLayout
@@ -55,12 +58,14 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="Type:"/>
                     <TextView
                         android:id="@+id/tv_type"
                         android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="@{viewmodel.image.type}"
                         tools:text="photo"/>
                 </LinearLayout>
@@ -72,14 +77,16 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="Tags:"/>
                     <TextView
                         android:id="@+id/tv_tags"
                         android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="@{viewmodel.image.tags}"
-                        tools:text="butterfly, insect, flower"/>
+                        tools:text="butterfly, insect, flower, butterfly, insect, flower, butterfly, insect, flower"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -98,12 +105,14 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Author:"/>
                 <TextView
                     android:id="@+id/tv_author"
                     android:layout_weight="4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@{viewmodel.image.user}"
                     tools:text="BibaBoba"/>
             </LinearLayout>
@@ -126,8 +135,9 @@
                     android:gravity="center_vertical"
                     android:padding="2dp"
                     android:maxLines="1"
+                    android:textColor="@color/black"
                     app:drawableStartCompat="@drawable/ic_baseline_remove_red_eye_24"
-                    android:text="@{viewmodel.image.views.toString()}"
+                    app:humanReadable="@{viewmodel.image.views}"
                     tools:text="34323" />
                 <TextView
                     android:id="@+id/tv_likes"
@@ -138,8 +148,9 @@
                     android:padding="2dp"
                     android:maxLines="1"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     app:drawableStartCompat="@drawable/ic_baseline_thumb_up_24"
-                    android:text="@{viewmodel.image.likes.toString()}"
+                    app:humanReadable="@{viewmodel.image.likes}"
                     tools:text="44" />
                 <TextView
                     android:id="@+id/tv_comments"
@@ -150,8 +161,9 @@
                     android:padding="2dp"
                     android:maxLines="1"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     app:drawableStartCompat="@drawable/ic_baseline_comment_24"
-                    android:text="@{viewmodel.image.comments.toString()}"
+                    app:humanReadable="@{viewmodel.image.comments}"
                     tools:text="4" />
                 <TextView
                     android:id="@+id/tv_favorite"
@@ -162,8 +174,9 @@
                     android:padding="2dp"
                     android:maxLines="1"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     app:drawableStartCompat="@drawable/ic_baseline_star_24"
-                    android:text="@{viewmodel.image.collections.toString()}"
+                    app:humanReadable="@{viewmodel.image.collections}"
                     tools:text="55" />
                 <TextView
                     android:id="@+id/tv_downloads"
@@ -174,8 +187,9 @@
                     android:padding="2dp"
                     android:maxLines="1"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     app:drawableStartCompat="@drawable/ic_baseline_cloud_download_24"
-                    android:text="@{viewmodel.image.downloads.toString()}"
+                    app:humanReadable="@{viewmodel.image.downloads}"
                     tools:text="5555" />
             </LinearLayout>
         </LinearLayout>

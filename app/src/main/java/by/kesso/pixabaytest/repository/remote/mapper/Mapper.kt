@@ -6,7 +6,7 @@ import by.kesso.pixabaytest.repository.remote.entity.RemoteImage
 object Mapper {
     fun map(image: RemoteImage): PixaImage {
         return PixaImage(
-            id = image.id?:0,
+            id = image.id?:0L,
             type = image.type,
             largeImageURL = image.largeImageURL,
             imageHeight = image.imageHeight,

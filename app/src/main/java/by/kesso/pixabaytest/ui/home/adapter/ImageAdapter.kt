@@ -2,6 +2,7 @@ package by.kesso.pixabaytest.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,29 +13,20 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 
 class ImageAdapter(
-    private val onClick: (PixaImage) -> Unit
+    private val listener: ClickListener
 ): PagingDataAdapter<PixaImage, ImageAdapter.ImageViewHolder>(REPO_COMPARATOR) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val binding = ItemImageBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ItemImageBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context), R.layout.item_image, parent, false)
         return ImageViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         with(holder) {
-            getItem(position)?.apply {
-                binding.tvUserName.text = user
-                binding.ivPreview.load(previewURL) {
-                    crossfade(true)
-                    placeholder(R.drawable.image_placeholder)
-                    transformations(RoundedCornersTransformation())
-                }
-                holder.itemView.setOnClickListener {
-                    onClick(this)
-                }
-            }
+            binding.item = getItem(position)
+            binding.listener = listener
         }
     }
 
@@ -51,4 +43,7 @@ class ImageAdapter(
         }
     }
 
+    fun interface ClickListener {
+        fun onClick(image: PixaImage)
+    }
 }
