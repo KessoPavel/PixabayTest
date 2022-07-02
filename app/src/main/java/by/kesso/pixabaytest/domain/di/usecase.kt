@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val usecase = module {
     single { GetImagesUseCase(get()) }
-    single { LoginUseCase() }
-    single { RegisterUseCase() }
+    single { LoginUseCase(get()) }
+    single { RegisterUseCase(get()) }
 }

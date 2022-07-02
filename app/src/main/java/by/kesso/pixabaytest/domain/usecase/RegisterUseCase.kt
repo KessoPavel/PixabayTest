@@ -1,14 +1,15 @@
 package by.kesso.pixabaytest.domain.usecase
 
-import by.kesso.pixabaytest.domain.entity.LoginResult
+import by.kesso.pixabaytest.domain.entity.RegisterResult
+import by.kesso.pixabaytest.domain.repository.LoginRepository
 import io.reactivex.rxjava3.core.Single
-import java.util.concurrent.TimeUnit
 
 
-class RegisterUseCase {
+class RegisterUseCase(
+    private val repository: LoginRepository,
+) {
 
-    fun register(email: String, password: String): Single<LoginResult> {
-        return Single.just<LoginResult>(LoginResult.Success)
-            .delay(5, TimeUnit.SECONDS)
+    fun register(email: String, password: String): Single<RegisterResult> {
+        return repository.register(email, password)
     }
 }

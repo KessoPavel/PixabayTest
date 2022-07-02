@@ -14,5 +14,7 @@ interface GetImages {
         @Query("key") apiKey: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
+        @Query("safesearch") safeSearch: Boolean = true,
+        @Query("order") order: String = "popular",
     ): Single<ImagePage>
 }

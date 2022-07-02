@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import by.kesso.pixabaytest.domain.entity.LoginResult
+import by.kesso.pixabaytest.domain.entity.RegisterResult
 import by.kesso.pixabaytest.domain.usecase.RegisterUseCase
 import by.kesso.pixabaytest.ui.utils.SingleLiveEvent
 
@@ -29,12 +30,13 @@ class RegisterViewModel(
             }
             .doOnSuccess { result ->
                 when(result) {
-                    is LoginResult.Error -> {
+                    is RegisterResult.Error -> {
                         _error.postValue(result.error)
                     }
-                    is LoginResult.Success -> {
+                    is RegisterResult.Success -> {
                         _success.postCall()
                     }
+                    else -> {}
                 }
                 _loading.postValue(false)
             }
