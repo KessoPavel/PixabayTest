@@ -40,7 +40,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Size:"/>
+                        android:text="@string/size"/>
                     <TextView
                         android:id="@+id/tv_size"
                         android:layout_weight="4"
@@ -59,7 +59,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Type:"/>
+                        android:text="@string/type"/>
                     <TextView
                         android:id="@+id/tv_type"
                         android:layout_weight="4"
@@ -78,7 +78,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Tags:"/>
+                        android:text="@string/tags"/>
                     <TextView
                         android:id="@+id/tv_tags"
                         android:layout_weight="4"
@@ -106,7 +106,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Author:"/>
+                    android:text="@string/author"/>
                 <TextView
                     android:id="@+id/tv_author"
                     android:layout_weight="4"

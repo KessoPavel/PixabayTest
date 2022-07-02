@@ -10,6 +10,8 @@ import by.kesso.pixabaytest.domain.entity.PixaImage
 import by.kesso.pixabaytest.ui.home.HomeViewModel
 import by.kesso.pixabaytest.ui.home.adapter.ImageAdapter
 import coil.load
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.lang.Long.signum
 import java.text.CharacterIterator
 import java.text.StringCharacterIterator
