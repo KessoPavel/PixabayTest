@@ -16,4 +16,5 @@
     <string name="invalid_email">Invalid Email!</string>
     <string name="password_lenght">The password must be between 6 and 12 characters long</string>
     <string name="password_dont_match">Passwords don\'t match</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -15,7 +15,9 @@ import by.kesso.pixabaytest.R
 import by.kesso.pixabaytest.databinding.FragmentHomeFrahmentBinding
 import by.kesso.pixabaytest.domain.entity.PixaImage
 import by.kesso.pixabaytest.ui.home.adapter.ImageAdapter
+import by.kesso.pixabaytest.ui.home.adapter.ImageLoadStateAdapter
 import by.kesso.pixabaytest.ui.home.adapter.MarginItemDecoration
+import by.kesso.pixabaytest.ui.utils.spanSizeLookup
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -37,7 +39,6 @@ class HomeFragment : Fragment(), ImageAdapter.ClickListener {
             container,
             false
         )
-        binding.adapter = adapter
         return binding.root
     }
 
@@ -49,9 +50,17 @@ class HomeFragment : Fragment(), ImageAdapter.ClickListener {
     }
 
     private fun initView() {
-        binding.rvList.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding.rvList.addItemDecoration(MarginItemDecoration(10, 3))
-        binding.rvList.adapter = adapter
+        val spanCount = 3
+        val footerAdapter = ImageLoadStateAdapter {adapter.retry()}
+
+        binding.rvList.layoutManager =
+            GridLayoutManager(requireContext(), spanCount).spanSizeLookup { position ->
+                if (position == adapter.itemCount && footerAdapter.itemCount != 0)
+                    spanCount
+                else 1
+            }
+        binding.rvList.addItemDecoration(MarginItemDecoration(10, spanCount))
+        binding.rvList.adapter = adapter.withLoadStateFooter(footerAdapter)
     }
 
     private fun observeViewModel() = with(viewModel) {
