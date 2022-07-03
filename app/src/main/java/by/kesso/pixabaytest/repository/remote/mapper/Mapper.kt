@@ -1,6 +1,7 @@
 package by.kesso.pixabaytest.repository.remote.mapper
 
 import by.kesso.pixabaytest.domain.entity.PixaImage
+import by.kesso.pixabaytest.repository.remote.entity.ImagePage
 import by.kesso.pixabaytest.repository.remote.entity.RemoteImage
 
 object Mapper {
@@ -29,5 +30,9 @@ object Mapper {
             userId = image.userId,
             userImageURL = image.userImageURL,
         )
+    }
+
+    fun transform(imagePage: ImagePage): List<PixaImage> {
+        return imagePage.hits?.mapNotNull { it?.let { map(it) } }?: emptyList()
     }
 }
