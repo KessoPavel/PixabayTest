@@ -61,10 +61,15 @@ class HomeFragment : Fragment(), ImageAdapter.ClickListener {
             }
         binding.rvList.addItemDecoration(MarginItemDecoration(10, spanCount))
         binding.rvList.adapter = adapter.withLoadStateFooter(footerAdapter)
+
+        binding.swipeRefresh.setOnRefreshListener {
+            adapter.refresh()
+        }
     }
 
     private fun observeViewModel() = with(viewModel) {
         list.observe(viewLifecycleOwner) {
+            binding.swipeRefresh.isRefreshing = false
             adapter.submitData(lifecycle, it)
         }
     }
