@@ -1,13 +1,11 @@
 package by.kesso.pixabaytest.ui.login
 
-import android.mtp.MtpConstants
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import by.kesso.pixabaytest.domain.entity.LoginResult
 import by.kesso.pixabaytest.domain.usecase.LoginUseCase
 import by.kesso.pixabaytest.ui.utils.SingleLiveEvent
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase

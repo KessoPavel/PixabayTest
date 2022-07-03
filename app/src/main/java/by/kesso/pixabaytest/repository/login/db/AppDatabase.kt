@@ -41,8 +41,5 @@ abstract class AppDataBase: RoomDatabase() {
                 .build()
         }
 
-        fun clear() {
-            INSTANCE?.clearAllTables()
-        }
     }
 }

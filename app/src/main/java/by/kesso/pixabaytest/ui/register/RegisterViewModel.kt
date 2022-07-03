@@ -3,7 +3,6 @@ package by.kesso.pixabaytest.ui.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import by.kesso.pixabaytest.domain.entity.LoginResult
 import by.kesso.pixabaytest.domain.entity.RegisterResult
 import by.kesso.pixabaytest.domain.usecase.RegisterUseCase
 import by.kesso.pixabaytest.ui.utils.SingleLiveEvent

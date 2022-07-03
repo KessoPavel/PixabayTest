@@ -5,7 +5,7 @@ import by.kesso.pixabaytest.repository.remote.entity.ImagePage
 import by.kesso.pixabaytest.repository.remote.entity.RemoteImage
 
 object Mapper {
-    fun map(image: RemoteImage): PixaImage {
+    private fun map(image: RemoteImage): PixaImage {
         return PixaImage(
             id = image.id?:0L,
             type = image.type,

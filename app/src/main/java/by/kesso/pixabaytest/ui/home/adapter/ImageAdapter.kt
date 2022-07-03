@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kesso.pixabaytest.R
 import by.kesso.pixabaytest.databinding.ItemImageBinding
 import by.kesso.pixabaytest.domain.entity.PixaImage
-import coil.load
-import coil.transform.RoundedCornersTransformation
 
 class ImageAdapter(
     private val listener: ClickListener

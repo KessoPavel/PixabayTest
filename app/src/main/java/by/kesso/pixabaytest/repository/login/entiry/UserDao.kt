@@ -1,6 +1,5 @@
 package by.kesso.pixabaytest.repository.login.entiry
 
-import android.provider.ContactsContract
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query

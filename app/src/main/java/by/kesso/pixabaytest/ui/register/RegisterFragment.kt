@@ -1,7 +1,6 @@
 package by.kesso.pixabaytest.ui.register
 
 import android.os.Bundle
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kesso.pixabaytest.R
 import by.kesso.pixabaytest.databinding.FragmentRegisterBinding
-import by.kesso.pixabaytest.ui.login.LoginFragmentDirections
 import by.kesso.pixabaytest.ui.utils.FieldValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

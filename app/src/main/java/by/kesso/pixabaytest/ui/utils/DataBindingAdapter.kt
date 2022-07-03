@@ -3,18 +3,12 @@ package by.kesso.pixabaytest.ui.utils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.paging.PagingData
-import androidx.recyclerview.widget.RecyclerView
 import by.kesso.pixabaytest.R
-import by.kesso.pixabaytest.domain.entity.PixaImage
-import by.kesso.pixabaytest.ui.home.HomeViewModel
-import by.kesso.pixabaytest.ui.home.adapter.ImageAdapter
 import coil.load
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import java.lang.Long.signum
 import java.text.CharacterIterator
 import java.text.StringCharacterIterator
+import kotlin.math.abs
 import kotlin.math.log10
 import kotlin.math.pow
 
@@ -46,15 +40,9 @@ object DataBindingAdapter {
         }
     }
 
-    @JvmStatic
-    @BindingAdapter("setAdapter")
-    fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
-        view.adapter = adapter
-    }
-
     private val Long.byte: String
         get() {
-            val absB = if (this == Long.MIN_VALUE) Long.MAX_VALUE else Math.abs(this)
+            val absB = if (this == Long.MIN_VALUE) Long.MAX_VALUE else abs(this)
             if (absB < 1024) {
                 return "$this B"
             }
