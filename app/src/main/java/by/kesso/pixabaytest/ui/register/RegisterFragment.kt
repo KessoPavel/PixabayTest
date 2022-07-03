@@ -48,7 +48,7 @@ class RegisterFragment: Fragment() {
         }
         success.observe(viewLifecycleOwner) {
             val direction =
-                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(binding.email.text?.toString())
+                RegisterFragmentDirections.actionRegisterFragmentToHomeFragment()
             findNavController().navigate(direction)
         }
         loading.observe(viewLifecycleOwner) {
