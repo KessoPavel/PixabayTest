@@ -28,8 +28,8 @@ class RoomLoginRepository(
             }
     }
 
-    override fun register(email: String, password: String): Single<RegisterResult> {
-        val user = User(0, email, hashPassword(password))
+    override fun register(email: String, password: String, age: Int): Single<RegisterResult> {
+        val user = User(0, email, hashPassword(password), age)
 
         return dao.getUser(email)
             .subscribeOn(Schedulers.io())

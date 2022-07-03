@@ -20,6 +20,7 @@ class RegisterFragment: Fragment() {
     private var emailIsValid: Boolean = false
     private var passwordIsValid: Boolean = false
     private var passwordConfirmationIsValid: Boolean = false
+    private var ageIsValid: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,9 +83,17 @@ class RegisterFragment: Fragment() {
             )
             validateRegistration()
         }
+        binding.age.doOnTextChanged { _, _, _, _ ->
+            ageIsValid = FieldValidator.validateAge(
+                requireContext(),
+                binding.age,
+                binding.ageTextInputLayout,
+            )
+            validateRegistration()
+        }
     }
 
     private fun validateRegistration() {
-        binding.register.isEnabled = emailIsValid && passwordIsValid && passwordConfirmationIsValid
+        binding.register.isEnabled = emailIsValid && passwordIsValid && passwordConfirmationIsValid && ageIsValid
     }
 }

@@ -38,6 +38,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/age_text_input_layout"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                android:hint="@string/age">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="@={viewmodel.age}"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_text_input_layout"
                 android:padding="5dp"
                 android:layout_width="match_parent"

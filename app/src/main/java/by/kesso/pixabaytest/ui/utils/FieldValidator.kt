@@ -35,7 +35,7 @@ object FieldValidator {
             passwordTextInputLayout.error = context.getString(R.string.request_field)
             password.requestFocus()
             return false
-        } else if (password.text.toString().length !in 7..11) {
+        } else if (password.text.toString().length !in 8..12) {
             passwordTextInputLayout.error = context.getString(R.string.password_lenght)
             password.requestFocus()
             return false
@@ -65,6 +65,34 @@ object FieldValidator {
             }
             else -> {
                 confirmPasswordTextInputLayout.isErrorEnabled = false
+            }
+        }
+        return true
+    }
+
+    fun validateAge(
+        context: Context,
+        age: TextInputEditText,
+        ageTextInputLayout: TextInputLayout
+    ): Boolean {
+        when {
+            age.text.toString().trim().isEmpty() -> {
+                ageTextInputLayout.error = context.getString(R.string.request_field)
+                age.requestFocus()
+                return false
+            }
+            age.text.toString().toIntOrNull() == null -> {
+                ageTextInputLayout.error = context.getString(R.string.age_not_number)
+                age.requestFocus()
+                return false
+            }
+            age.text.toString().toInt() !in 18..99 -> {
+                ageTextInputLayout.error = context.getString(R.string.age_range)
+                age.requestFocus()
+                return false
+            }
+            else -> {
+                ageTextInputLayout.isErrorEnabled = false
             }
         }
         return true

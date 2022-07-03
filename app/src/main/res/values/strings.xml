@@ -18,4 +18,7 @@
     <string name="password_dont_match">Passwords don\'t match</string>
     <string name="retry">Retry</string>
     <string name="image">image</string>
+    <string name="age">Age</string>
+    <string name="age_not_number">Age must be a number</string>
+    <string name="age_range">The age must be limited between 18 and 99 years old</string>
 </resources>

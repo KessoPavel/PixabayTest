@@ -12,6 +12,7 @@ class RegisterViewModel(
 ): ViewModel() {
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
+    val age = MutableLiveData<String>()
 
     private val _error = SingleLiveEvent<String?>()
     val error: LiveData<String?> = _error
@@ -23,7 +24,7 @@ class RegisterViewModel(
     val success: LiveData<Unit> = _success
 
     fun register() {
-        registerUseCase.register(email.value?:"", password.value?:"")
+        registerUseCase.register(email.value?:"", password.value?:"", age.value?.toInt() ?: 0)
             .doOnSubscribe {
                 _loading.postValue(true)
             }

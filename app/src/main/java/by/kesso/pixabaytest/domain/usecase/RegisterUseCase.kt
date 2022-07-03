@@ -9,7 +9,7 @@ class RegisterUseCase(
     private val repository: LoginRepository,
 ) {
 
-    fun register(email: String, password: String): Single<RegisterResult> {
-        return repository.register(email, password)
+    fun register(email: String, password: String, age: Int): Single<RegisterResult> {
+        return repository.register(email, password, age)
     }
 }
