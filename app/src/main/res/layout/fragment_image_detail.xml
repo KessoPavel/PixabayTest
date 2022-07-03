@@ -6,6 +6,9 @@
         <variable
             name="viewmodel"
             type="by.kesso.pixabaytest.ui.imageDetail.ImageDetailViewModel" />
+        <variable
+            name="listener"
+            type="by.kesso.pixabaytest.ui.imageDetail.CropListener" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
@@ -17,12 +20,23 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             app:imageUrl="@{viewmodel.image.largeImageURL}"
-            tools:src="@drawable/image_placeholder" />
+            tools:src="@drawable/image_placeholder"
+            android:contentDescription="@string/image" />
+
+        <ImageView
+            android:id="@+id/scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:padding="15dp"
+            android:onClick="@{() -> listener.scale()}"
+            android:background="@drawable/scale_rounded_background"
+            app:srcCompat="@drawable/ic_baseline_crop_free_24" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#BFFFFFFF"
+            android:background="@drawable/details_rounded_background"
             android:padding="15dp"
             android:layout_gravity="bottom"
             android:orientation="vertical">

@@ -9,24 +9,26 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import by.kesso.pixabaytest.R
 import by.kesso.pixabaytest.databinding.FragmentImageDetailBinding
+import by.kesso.pixabaytest.ui.utils.next
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ImageDetailFragment: Fragment() {
+class ImageDetailFragment: Fragment(), CropListener {
     private val viewModel: ImageDetailViewModel by viewModel()
     private val args: ImageDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentImageDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentImageDetailBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_image_detail, container, false
         )
-        val view: View = binding.root
         binding.viewmodel = viewModel
-        return view
+        binding.listener = this
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,4 +36,12 @@ class ImageDetailFragment: Fragment() {
 
         viewModel.init(args.image)
     }
+
+    override fun scale() {
+        binding.ivImage.scaleType = binding.ivImage.scaleType.next()
+    }
+}
+
+interface CropListener {
+    fun scale()
 }
