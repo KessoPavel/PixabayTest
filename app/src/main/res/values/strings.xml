@@ -12,4 +12,8 @@
     <string name="register">register</string>
     <string name="or">OR</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="request_field">Required Field!</string>
+    <string name="invalid_email">Invalid Email!</string>
+    <string name="password_lenght">The password must be between 6 and 12 characters long</string>
+    <string name="password_dont_match">Passwords don\'t match</string>
 </resources>

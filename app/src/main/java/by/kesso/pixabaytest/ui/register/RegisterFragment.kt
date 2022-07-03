@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import by.kesso.pixabaytest.R
 import by.kesso.pixabaytest.databinding.FragmentRegisterBinding
 import by.kesso.pixabaytest.ui.login.LoginFragmentDirections
+import by.kesso.pixabaytest.ui.utils.FieldValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment: Fragment() {
@@ -59,71 +60,30 @@ class RegisterFragment: Fragment() {
 
     private fun setupValidation() {
         binding.email.doOnTextChanged { _, _, _, _ ->
-            emailIsValid = validateEmail()
+            emailIsValid = FieldValidator.validateEmail(
+                requireContext(),
+                binding.email,
+                binding.emailTextInputLayout,
+            )
             validateRegistration()
         }
         binding.password.doOnTextChanged { _, _, _, _ ->
-            passwordIsValid = validatePassword()
+            passwordIsValid = FieldValidator.validatePassword(
+                requireContext(),
+                binding.password,
+                binding.passwordTextInputLayout,
+            )
             validateRegistration()
         }
         binding.confirmPassword.doOnTextChanged { _, _, _, _ ->
-            passwordConfirmationIsValid = validateConfirmPassword()
+            passwordConfirmationIsValid = FieldValidator.validateConfirmPassword(
+                requireContext(),
+                binding.confirmPassword,
+                binding.confirmPasswordTextInputLayout,
+                binding.password
+            )
             validateRegistration()
         }
-    }
-
-
-    private fun validateEmail(): Boolean {
-        if (binding.email.text.toString().trim().isEmpty()) {
-            binding.emailTextInputLayout.error = "Required Field!"
-            binding.email.requestFocus()
-            return false
-        } else if (!isValidEmail(binding.email.text.toString())) {
-            binding.emailTextInputLayout.error = "Invalid Email!"
-            binding.email.requestFocus()
-            return false
-        } else {
-            binding.emailTextInputLayout.isErrorEnabled = false
-        }
-        return true
-    }
-
-    private fun isValidEmail(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private fun validatePassword(): Boolean {
-        if (binding.password.text.toString().trim().isEmpty()) {
-            binding.passwordTextInputLayout.error = "Required Field!"
-            binding.password.requestFocus()
-            return false
-        } else if (binding.password.text.toString().length !in 7..11) {
-            binding.passwordTextInputLayout.error = "The password must be between 6 and 12 characters long"
-            binding.password.requestFocus()
-            return false
-        } else {
-            binding.passwordTextInputLayout.isErrorEnabled = false
-        }
-        return true
-    }
-
-    private fun validateConfirmPassword(): Boolean {
-        when {
-            binding.confirmPassword.text.toString().trim().isEmpty() -> {
-                binding.confirmPasswordTextInputLayout.error = "Required Field!"
-                binding.confirmPassword.requestFocus()
-                return false
-            }
-            binding.confirmPassword.text.toString() != binding.password.text.toString() -> {
-                binding.confirmPasswordTextInputLayout.error = "Passwords don't match"
-                binding.confirmPassword.requestFocus()
-                return false
-            }
-            else -> {
-                binding.confirmPasswordTextInputLayout.isErrorEnabled = false
-            }
-        }
-        return true
     }
 
     private fun validateRegistration() {

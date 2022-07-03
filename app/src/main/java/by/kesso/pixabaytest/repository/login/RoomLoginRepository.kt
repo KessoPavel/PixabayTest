@@ -50,7 +50,7 @@ class RoomLoginRepository(
             }
     }
 
-    fun hashPassword(password: String): String {
+    private fun hashPassword(password: String): String {
         val md: MessageDigest = MessageDigest.getInstance("SHA-512")
         md.reset()
         md.update(password.toByteArray())

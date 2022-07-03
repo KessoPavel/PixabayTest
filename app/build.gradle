@@ -64,7 +64,7 @@ dependencies {
     implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
 
     // rx
-    implementation "io.reactivex.rxjava3:rxjava:$rx_version"
+    implementation "io.reactivex.rxjava3:rxkotlin:$rx_version"
     implementation "io.reactivex.rxjava3:rxandroid:$rx_version"
 
     // paging3
